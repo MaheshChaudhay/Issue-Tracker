@@ -21,7 +21,7 @@ function applyAJAX() {
     data: data,
     success: function (data) {
       console.log(data);
-      window.location = `http://localhost:8000/projects/project-detail/${projectId}`;
+      window.location = `/projects/project-detail/${projectId}`;
     },
     error: function (err) {
       console.log(err.responseText);
