@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
+// "mongodb+srv://mahesh:TfdwgxN3pFuBWmCT@cluster0.tltela2.mongodb.net/test"
 
 mongoose.connect(
-  "mongodb+srv://mahesh:TfdwgxN3pFuBWmCT@cluster0.tltela2.mongodb.net/test",
+  "mongodb+srv://mahesh:TfdwgxN3pFuBWmCT@cluster0.tltela2.mongodb.net/?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
