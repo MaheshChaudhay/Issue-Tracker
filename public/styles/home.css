@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #3b183f;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+}
+
+#logo {
+  font-size: 1.5rem;
+  color: #ef225d;
+}
+
+header ul {
+  text-align: right;
+  display: flex;
+  list-style: none;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+header ul li a {
+  margin: 0 0.5rem;
+  color: #ffffff;
+}
+
+#project-container {
+  padding: 2rem 1rem;
+  flex-grow: 1;
+  background-color: #f3ebf4;
+}
+
+#project-container ul {
+  color: #2f1632;
+}
+
+#add-project-div {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+#add-project {
+  text-decoration: none;
+  padding: 0.9rem;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  background-color: #d13361;
+}
+
+#project-list {
+  list-style: none;
+}
+
+#project-list li {
+  margin: 1rem auto;
+  border-radius: 5px;
+  width: 80%;
+  margin-bottom: 3rem;
+  background-color: #ffffff;
+}
+
+.project-item {
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  justify-content: space-around;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
+}
+.view-project-btn {
+  text-decoration: none;
+  position: absolute;
+  bottom: -2rem;
+  right: -0.7rem;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  background-color: #ee638b;
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.294);
+}
+.view-project-btn span {
+  margin-left: 0.7rem;
+  font-size: 1.5rem;
+}
+
+.project-text {
+  padding: 1.5rem 2rem 0;
+}
+.project-title {
+  color: #d13361;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.project-description {
+  font-size: 0.9rem;
+  font-weight: 200;
+  color: #2f1632;
+  margin: 0.9rem auto;
+}
+.project-text-issue {
+  display: flex;
+  margin: 1.2rem 0 1.5rem;
+}
+.project-text-issue-count {
+  margin-right: 2.5rem;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+  border-radius: 4px;
+  color: #d13361;
+}
+h2 {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #818189;
+}
+
+.open-issue {
+  background-color: #b3dec1;
+  color: #526a5a;
+}
+
+.closed-issue {
+  color: #7d968f;
+  background-color: #dbf9f0;
+}
+
+.total-issue {
+  background-color: #d1da90;
+  color: #818a49;
+}
+
+.issue-count {
+  font-weight: bold;
+}

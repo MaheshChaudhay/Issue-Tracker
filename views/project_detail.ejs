@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/styles/project_detail.css" />
+    <title>Document</title>
+  </head>
+
+  <body style="background-color: #f3ebf4">
+    <header>
+      <h2><a id="logo" href="/">Issue-Tracker</a></h2>
+      <ul>
+        <li><a href="/">All-Authors</a></li>
+        <li><a href="/projects/user-projects">My-Space</a></li>
+        <% if (locals.user) { %>
+        <li><a href="/users/logout">Logout</a></li>
+        <% } else {%>
+        <li><a href="/users/login">Login</a></li>
+        <% } %>
+      </ul>
+    </header>
+    <div id="project-details">
+      <h3 id="project-title"><%= project.title %></h3>
+      <p id="project-description"><%= project.description %></p>
+      <h5 id="project-author"><%= project.author %></h5>
+      <div class="project-text-issue">
+        <div class="project-text-issue-count total-issue">
+          <h2>Total Issues</h2>
+          <p class="issue-count"><%= project.issues.length %></p>
+        </div>
+        <div class="project-text-issue-count open-issue">
+          <h2>Open Issues</h2>
+          <p class="issue-count"><%= project.openedIssues %></p>
+        </div>
+        <div class="project-text-issue-count closed-issue">
+          <h2>Closed Issues</h2>
+          <p class="issue-count"><%= project.closedIssues %></p>
+        </div>
+      </div>
+      <div id="filters-div">
+        <h4 style="color: #ee638b; font-size: 1.2rem">Filters</h4>
+        <form
+          id="search-form"
+          method="POST"
+          action="/issues/search-issue/<%= project._id %>"
+        >
+          <input
+            id="search-box"
+            type="text"
+            name="search"
+            placeholder="Search an Issue"
+            required
+          />
+          <input
+            id="search-btn"
+            type="submit"
+            name="search-btn"
+            value="Search"
+          />
+        </form>
+        <form
+          method="POST"
+          action="/projects/label-author-filters/<%= project._id %>"
+        >
+          <div id="label-filters">
+            <select
+              name="labels"
+              id="labels"
+              multiple
+              placeholder="Choose a Label"
+            >
+              <option value="" disabled selected>Select Your Label</option>
+              <% for( const label of labels ) { %>
+              <option value="<%= label %>"><%= label %></option>
+              <% } %>
+            </select>
+          </div>
+          <div id="">
+            <select
+              name="authors"
+              id="authors"
+              multiple
+              placeholder="Choose an Author"
+            >
+              <option value="" disabled selected>Select Your Label</option>
+              <% for( const author of authors ) { %>
+              <option value="<%= author %>"><%= author %></option>
+              <% } %>
+            </select>
+          </div>
+          <input id="apply-filter-btn" type="submit" value="Apply Filters" />
+        </form>
+        <% if (filtered) { %>
+        <a
+          id="remove-filter-btn"
+          href="/projects/project-detail/<%=project._id %>"
+          >Remove Filters</a
+        >
+        <% } %>
+      </div>
+    </div>
+    <div id="issue-btn-div">
+      <div id="issues-heading-div">
+        <span style="color: #d13361; font-weight: bold; font-size: 2rem"
+          >Issues</span
+        >
+        <a id="add-issue" href="/issues/create-issue/<%= project._id %>"
+          >Create Issue</a
+        >
+      </div>
+    </div>
+    <div id="issues-div">
+      <ul style="list-style: none">
+        <% for( const issue of project.issues ) { %>
+        <li id="<%= issue._id %>">
+          <div class="issue-card <%= issue.status %>">
+            <div class="issue-container">
+              <div class="title-div">
+                <b><%= issue.title %></b>
+                <a
+                  style="
+                    text-decoration: none;
+                    font-size: 1.2rem;
+                    color: #d13361;
+                  "
+                  href="/issues/delete-issue/<%= issue._id %>"
+                  ><i class="fa-solid fa-trash"></i
+                ></a>
+              </div>
+              <p style="font-size: 0.9rem"><%= issue.description %></p>
+
+              <p style="color: gray; font-size: 0.95rem"><%= issue.author %></p>
+
+              <div class="issue-labels-div">
+                <% for( const label of issue.labels ) { %>
+                <span class="issue-label"><%= label %></span><% } %>
+              </div>
+              <div class="toggle-issue-div">
+                <a
+                  href="/issues/toggle-issue/<%= issue._id %>"
+                  class="toggle-issue"
+                >
+                  <% if (issue.status == 'Closed') { %> Open <% } else { %>
+                  Close <% } %>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+</html>

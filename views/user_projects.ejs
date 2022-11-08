@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/home.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h2><a id="logo" href="/">Issue-Tracker</a></h2>
+      <ul>
+        <li><a href="/">All-Authors</a></li>
+        <li><a href="/projects/user-projects">My-Space</a></li>
+        <% if (locals.user) { %>
+        <li><a href="/users/logout">Logout</a></li>
+        <% } else {%>
+        <li><a href="/users/login">Login</a></li>
+        <% } %>
+      </ul>
+    </header>
+    <section id="project-container">
+      <div id="add-project-div">
+        <a id="add-project" href="/projects/add-project/">Add Project</a>
+      </div>
+      <h3 style="text-align: center"><%= locals.user.name %> Projects</h3>
+      <ul id="project-list">
+        <% for( const project of projects ) { %>
+        <li id="<%= project._id %>">
+          <div class="project-item">
+            <div class="project-text">
+              <h1 class="project-title"><%= project.title %></h1>
+              <p class="project-description"><%= project.description %></p>
+            </div>
+            <div class="project-text-issue">
+              <div class="project-text-issue-count total-issue">
+                <h2>Total Issues</h2>
+                <p class="issue-count"><%= project.issues.length %></p>
+              </div>
+              <div class="project-text-issue-count open-issue">
+                <h2>Open Issues</h2>
+                <p class="issue-count"><%= project.openedIssues %></p>
+              </div>
+              <div class="project-text-issue-count closed-issue">
+                <h2>Closed Issues</h2>
+                <p class="issue-count"><%= project.closedIssues %></p>
+              </div>
+            </div>
+            <a
+              class="view-project-btn"
+              href="/projects/project-detail/<%= project._id %>"
+              >view project <span>-></span></a
+            >
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </section>
+  </body>
+</html>

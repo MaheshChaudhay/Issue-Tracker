@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/create_issue.css" />
+    <title>Create Issue</title>
+  </head>
+  <body>
+    <h2>Add New Issue</h2>
+    <div id="form-div">
+      <form id="issue-form" method="POST" action="/issues/create-issue">
+        <div class="form-item">
+          <input type="hidden" name="projectId" value="<%= projectId %>" />
+          <h3>Title</h3>
+          <br />
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter Project Title"
+            required
+          />
+        </div>
+        <div class="form-item">
+          <h3>Description</h3>
+          <br />
+          <textarea
+            rows="2"
+            cols="50"
+            name="description"
+            placeholder="Enter Project Description"
+            required
+          ></textarea>
+        </div>
+        <div class="form-item">
+          <h3>Labels</h3>
+          <select
+            name="labels"
+            id="labels"
+            multiple
+            placeholder="Choose a label"
+          >
+            <option value="" disabled selected>Select Your Label</option>
+            <% for( const label of labels ) { %>
+            <option value="<%= label %>"><%= label %></option>
+            <% } %>
+          </select>
+          <div id="add-label-div">
+            <div id="add-labels-controls-div">
+              <input
+                type="text"
+                name="label-input"
+                id="label_input"
+                placeholder="Enter New Label"
+              />
+              <button type="button" id="add-label-btn">Add Label</button>
+            </div>
+            <div id="labels-div"></div>
+          </div>
+        </div>
+        <div class="form-item">
+          <h3>Author</h3>
+          <br />
+          <input
+            type="text"
+            name="author"
+            placeholder="Enter Author Name"
+            required
+          />
+        </div>
+        <div>
+          <input id="submit-btn" type="submit" value="Create Issue" />
+        </div>
+      </form>
+    </div>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="/scripts/create_issue.js"></script>
+</html>

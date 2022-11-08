@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/create_project.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <div id="form-div" style="height: fit-content">
+      <form id="login-form" method="POST" action="/users/login">
+        <div id="error-div"></div>
+        <div class="form-item">
+          <h3>Email</h3>
+          <br />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Your Email"
+            required
+          />
+        </div>
+
+        <div class="form-item">
+          <h3>Password</h3>
+          <br />
+          <input
+            type="Password"
+            name="password"
+            placeholder="Enter Your Password"
+            required
+          />
+        </div>
+        <div>
+          <input id="submit-btn" type="submit" value="Login" />
+        </div>
+        <a id="signup-btn" href="/users/signup">SignUp</a>
+      </form>
+    </div>
+  </body>
+  <script src="/scripts/login.js"></script>
+</html>
