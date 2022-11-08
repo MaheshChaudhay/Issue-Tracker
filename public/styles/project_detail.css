@@ -7,10 +7,10 @@ body {
 }
 
 header {
-  height: 10%;
+  height: 5%;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.2rem;
   background-color: #3b183f;
   align-items: center;
 }
